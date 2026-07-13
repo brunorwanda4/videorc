@@ -11,9 +11,9 @@
     "pnpm": ">=11.0.0 <12"
   },
   "scripts": {
-    "dev": "pnpm --filter @videorc/desktop dev",
-    "dev:zerocopy": "node scripts/run-with-env.mjs --platform=darwin VIDEORC_ZEROCOPY_SOURCES=1 -- pnpm --filter @videorc/desktop dev",
-    "build": "pnpm --filter @videorc/desktop build",
+    "dev": "node init && pnpm --filter @videorc/desktop dev",
+    "dev:zerocopy": "node init && node scripts/run-with-env.mjs --platform=darwin VIDEORC_ZEROCOPY_SOURCES=1 -- pnpm --filter @videorc/desktop dev",
+    "build": "node init && pnpm --filter @videorc/desktop build",
     "typecheck": "pnpm --filter @videorc/desktop typecheck",
     "check:windows": "node scripts/run-with-env.mjs --platform=darwin --prepend-path=/opt/homebrew/opt/llvm/bin XWIN_ACCEPT_LICENSE=1 -- cargo xwin check -p videorc-backend --target x86_64-pc-windows-msvc",
     "lint": "eslint \"apps/desktop/**/*.{ts,tsx}\"",
@@ -30,8 +30,8 @@
     "release:notify:discord": "node scripts/notify-discord-release.mjs",
     "ffmpeg:build:macos": "bash scripts/build-ffmpeg-macos.sh",
     "ffmpeg:fetch:windows": "node scripts/fetch-ffmpeg-windows.mjs",
-    "build:native-preview-addon": "node scripts/build-native-preview-addon.mjs",
-    "build:native-preview-addon:release": "node scripts/build-native-preview-addon.mjs --release --universal",
+    "build:native-preview-addon": "node init && node scripts/build-native-preview-addon.mjs",
+    "build:native-preview-addon:release": "node init && node scripts/build-native-preview-addon.mjs --release --universal",
     "package:backend": "cargo build --release -p videorc-backend",
     "package:backend:macos": "cargo build --release -p videorc-backend --bin videorc-backend --bin native_preview_host_helper && pnpm build:native-preview-addon:release",
     "package:preflight:macos": "node scripts/preflight-macos-package.mjs",

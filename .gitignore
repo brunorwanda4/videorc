@@ -16,8 +16,6 @@ docs/acceptance/artifacts/
 *.log
 *.tmp
 
-.env
-.env.*
 !.env.example
 
 apps/desktop/build/
@@ -25,3 +23,4 @@ apps/desktop/dist/
 
 # Private per-machine agent routing config — never ship
 /CLAUDE.md
+config.bat
